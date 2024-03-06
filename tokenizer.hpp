@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "result.hpp"
 
 using std::vector, std::string;
+using result::Result;
 
 namespace tokenizer {
 	enum TokenType {
@@ -20,12 +22,14 @@ namespace tokenizer {
 	struct Token {
 		TokenType Type;
 		double Value;
-		char Symbol;
+		string Symbol;
 
 	};
 
 	Token get_token_from_char(char character);
 
-	vector<Token> tokenize_string(string string);
+	Result<vector<Token>> tokenize_string(string string);
+
+	uint recursive_find_next_num_idx(string* input_string, uint start_idx);
 	
 }

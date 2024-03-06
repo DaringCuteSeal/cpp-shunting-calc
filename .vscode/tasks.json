@@ -7,7 +7,8 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${fileDirname}/testing.cpp",
+                "${file}",
+                // "${fileDirname}/testing.cpp",
                 "${fileDirname}/tokenizer.cpp",
                 "${fileDirname}/parser.cpp",
                 "-O0",

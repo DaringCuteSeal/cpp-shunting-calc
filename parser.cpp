@@ -28,11 +28,10 @@ namespace parser
 
 	TokenCategory get_token_category(Token token)
 	{
-		if (isdigit(token.Symbol))
-			return TokenCategory::Number;
-
 		switch (token.Type)
 		{
+		case TokenType::Number:
+			return TokenCategory::Number;
 		case TokenType::Minus:
 			return TokenCategory::Operator;
 		case TokenType::Plus:

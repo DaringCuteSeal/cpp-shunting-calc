@@ -34,10 +34,5 @@ namespace result
 			optional<T> return_val;
 			string err_msg = "";
 	};
-	template <typename T>
-	Result<T> new_ok_result(T return_val);
-
-	template <typename T>
-	Result<T> new_err_result(string err_msg);
 
 }

@@ -1,23 +1,29 @@
 #include <iostream>
+#include "tokenizer.hpp"
+#include "result.hpp"
+#include <bits/stdc++.h>
+#include <vector>
 #include <string>
-#include <stack>
 
-using std::cout, std::string;
-
-const string get_hello_string()
-{
-	return "HELLO";
-}
-
-struct Person
-{
-	string name;
-	int age;
-};
+using std::string, std::vector;
 
 int main()
 {
-	std::stack<Person> stack_of_int;
-	std::cout << "Ya siapa tau gitu";
-	std::cout << stack_of_int.size();
+	std::cout << "Input string> ";
+	char input_string[100];
+	std::cin.getline(input_string, 100);
+
+	auto result = tokenizer::tokenize_string(input_string);
+
+	if (!result.return_val.has_value())
+	{
+		std::cout << "Error tokenizing string: " << result.err_msg << '\n';
+		exit(1);
+	};
+	auto result_vec = result.return_val.value();
+
+	for (auto token : result_vec)
+	{
+		std::cout << token.Symbol << '\n';
+	};
 }
