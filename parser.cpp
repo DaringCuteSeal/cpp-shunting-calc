@@ -17,9 +17,9 @@ namespace parser
 			return 2;
 		case TokenType::Div:
 			return 2;
-		case TokenType::OpenParanthesis:
+		case TokenType::OpenParenthesis:
 			return 0;
-		case TokenType::CloseParanthesis:
+		case TokenType::CloseParenthesis:
 			return 0;
 		default:
 			return 4;
@@ -40,9 +40,9 @@ namespace parser
 			return TokenCategory::Operator;
 		case TokenType::Div:
 			return TokenCategory::Operator;
-		case TokenType::OpenParanthesis:
+		case TokenType::OpenParenthesis:
 			return TokenCategory::OpenParanthesis;
-		case TokenType::CloseParanthesis:
+		case TokenType::CloseParenthesis:
 			return TokenCategory::CloseParanthesis;
 		case TokenType::Error:
 			return TokenCategory::Error;
@@ -95,7 +95,7 @@ namespace parser
 				while (ops_stack.size() > 0)
 				{
 					auto top_item = ops_stack.top();
-					if (top_item.Type != TokenType::OpenParanthesis)
+					if (top_item.Type != TokenType::OpenParenthesis)
 					{
 						result_queue.push(top_item);
 						ops_stack.pop();
@@ -118,7 +118,7 @@ namespace parser
 
 		while (ops_stack.size() > 0)
 		{
-			if (ops_stack.top().Type != TokenType::OpenParanthesis)
+			if (ops_stack.top().Type != TokenType::OpenParenthesis)
 			{
 				result_queue.push(ops_stack.top());
 				ops_stack.pop();

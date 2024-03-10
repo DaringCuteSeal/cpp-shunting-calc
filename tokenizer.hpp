@@ -15,8 +15,8 @@ namespace tokenizer {
 		Mult,
 		Div,
 		EOL,
-		OpenParanthesis,
-		CloseParanthesis,
+		OpenParenthesis,
+		CloseParenthesis,
 	};
 
 	struct Token {

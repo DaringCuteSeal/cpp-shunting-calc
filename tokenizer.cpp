@@ -35,9 +35,9 @@ namespace tokenizer
 		case '/':
 			return Token{tokenizer::TokenType::Div, 0, "/"};
 		case '(':
-			return Token{tokenizer::TokenType::OpenParanthesis, 0, "("};
+			return Token{tokenizer::TokenType::OpenParenthesis, 0, "("};
 		case ')':
-			return Token{tokenizer::TokenType::CloseParanthesis, 0, ")"};
+			return Token{tokenizer::TokenType::CloseParenthesis, 0, ")"};
 		case '\n':
 			return tokenizer::Token{tokenizer::TokenType::EOL, 0, " "};
 		default:
@@ -94,7 +94,7 @@ namespace tokenizer
 				/* Special case for an unary negation */
 				// FIXME: why so unreadable
 				if (curr_token.Type == TokenType::Minus && (tokens.size() == 0 ||
-															(((tokens.back().Type != TokenType::Minus) && (tokens.back().Type != TokenType::Number) && (tokens.back().Type != TokenType::OpenParanthesis) && (tokens.back().Type != TokenType::CloseParanthesis)) &&
+															(((tokens.back().Type != TokenType::Minus) && (tokens.back().Type != TokenType::Number) && (tokens.back().Type != TokenType::OpenParenthesis) && (tokens.back().Type != TokenType::CloseParenthesis)) &&
 															 (get_op_token(input_string.at(i + 1)).Type == TokenType::Number))))
 
 				{

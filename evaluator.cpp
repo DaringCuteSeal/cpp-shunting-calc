@@ -67,7 +67,10 @@ namespace evaluator
 				return Result<double>(ResultType::Err, "Invalid evaluation stack length (insufficient operands)");
 			}
 		};
-		return Result<double>(ResultType::Ok, "success", evaluator_stack.top().Value);
+		if (evaluator_stack.size() > 0)
+			return Result<double>(ResultType::Ok, "success", evaluator_stack.top().Value);
+		else
+			return Result<double>(ResultType::Ok, "success", 0);
 	};
 
 };
