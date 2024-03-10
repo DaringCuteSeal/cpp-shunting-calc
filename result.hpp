@@ -28,6 +28,13 @@ namespace result
 
 			};
 
+			bool default_handler()
+			{
+				if (this->result_type == ResultType::Err)
+					return false;
+				return true;
+			};
+
 			virtual ~Result() {};
 
 			ResultType result_type;

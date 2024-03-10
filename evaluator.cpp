@@ -8,7 +8,7 @@ using tokenizer::TokenType;
 
 namespace evaluator
 {
-	Result<double> evaluate_postfix(queue<Token> postfix_tokens)
+	Result<double> evaluate_postfix(queue<Token> postfix_vec)
 	{
 		std::stack<Token> evaluator_stack;
 
@@ -16,16 +16,16 @@ namespace evaluator
 		Token second_operand;
 		double tmp_result;
 
-		while (postfix_tokens.size() > 0)
+		while (postfix_vec.size() > 0)
 		{
-			Token curr_token = postfix_tokens.front();
+			Token curr_token = postfix_vec.front();
 			switch (parser::get_token_category(curr_token))
 			{
 
 			case TokenCategory::Number:
 			{
 				evaluator_stack.push(curr_token);
-				postfix_tokens.pop();
+				postfix_vec.pop();
 				break;
 			}
 
@@ -59,7 +59,7 @@ namespace evaluator
 				}
 
 				evaluator_stack.push(Token{TokenType::Number, tmp_result, std::to_string(tmp_result)});
-				postfix_tokens.pop();
+				postfix_vec.pop();
 				break;
 			}
 

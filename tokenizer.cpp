@@ -89,9 +89,10 @@ namespace tokenizer
 			{
 				curr_token = get_op_token(input_string.at(i));
 				if (curr_token.Type == TokenType::Error)
-					return Result<vector<Token>>(result::ResultType::Err, "invalid token: " + std::to_string(input_string.at(i)) + " at index " + std::to_string(i));
+					return Result<vector<Token>>(result::ResultType::Err, "invalid token: " + std::string(1, input_string.at(i)) + " at index " + std::to_string(i));
 
 				/* Special case for an unary negation */
+				// FIXME: why so unreadable
 				if (curr_token.Type == TokenType::Minus && (tokens.size() == 0 ||
 							(((tokens.back().Type != TokenType::Minus) && (tokens.back().Type != TokenType::Number) && (tokens.back().Type != TokenType::OpenParanthesis) && (tokens.back().Type != TokenType::CloseParanthesis)) &&
 							 (get_op_token(input_string.at(i + 1)).Type == TokenType::Number))))
