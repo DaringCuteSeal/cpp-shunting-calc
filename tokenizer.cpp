@@ -93,8 +93,9 @@ namespace tokenizer
 
 				/* Special case for an unary negation */
 				if (curr_token.Type == TokenType::Minus && (tokens.size() == 0 ||
-															(((tokens.back().Type != TokenType::Minus) && (tokens.back().Type != TokenType::Number)) &&
-															 (get_op_token(input_string.at(i + 1)).Type == TokenType::Number))))
+							(((tokens.back().Type != TokenType::Minus) && (tokens.back().Type != TokenType::Number) && (tokens.back().Type != TokenType::OpenParanthesis) && (tokens.back().Type != TokenType::CloseParanthesis)) &&
+							 (get_op_token(input_string.at(i + 1)).Type == TokenType::Number))))
+
 				{
 					num_end_idx = recursive_find_next_num_idx(&input_string, i);
 					number_str = input_string.substr(i, num_end_idx - i + 1);
