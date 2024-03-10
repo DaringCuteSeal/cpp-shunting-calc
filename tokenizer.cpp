@@ -11,7 +11,7 @@ namespace tokenizer
 			i = 1;
 		for (i = i; i < number.length(); i++)
 		{
-			if (!isdigit(number.at(i)))
+			if (!isdigit(number.at(i)) && number.at(i) != '.')
 				return tokenizer::Token{tokenizer::TokenType::Error, 0, " "};
 		}
 		return Token{tokenizer::TokenType::Number, stod(number), number};
@@ -50,7 +50,7 @@ namespace tokenizer
 	{
 		if ((start_idx + 2) > input_string->length())
 			return start_idx;
-		if (isdigit(input_string->at(start_idx + 1)))
+		if (isdigit(input_string->at(start_idx + 1)) || input_string->at(start_idx + 1) == '.')
 		{
 			return recursive_find_next_num_idx(input_string, start_idx + 1);
 		}
@@ -94,8 +94,8 @@ namespace tokenizer
 				/* Special case for an unary negation */
 				// FIXME: why so unreadable
 				if (curr_token.Type == TokenType::Minus && (tokens.size() == 0 ||
-							(((tokens.back().Type != TokenType::Minus) && (tokens.back().Type != TokenType::Number) && (tokens.back().Type != TokenType::OpenParanthesis) && (tokens.back().Type != TokenType::CloseParanthesis)) &&
-							 (get_op_token(input_string.at(i + 1)).Type == TokenType::Number))))
+															(((tokens.back().Type != TokenType::Minus) && (tokens.back().Type != TokenType::Number) && (tokens.back().Type != TokenType::OpenParanthesis) && (tokens.back().Type != TokenType::CloseParanthesis)) &&
+															 (get_op_token(input_string.at(i + 1)).Type == TokenType::Number))))
 
 				{
 					num_end_idx = recursive_find_next_num_idx(&input_string, i);

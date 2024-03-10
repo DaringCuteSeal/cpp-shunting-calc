@@ -4,6 +4,14 @@ This project is a basic implementation of the [Shunting-Yard algorithm](https://
 
 P.S this is for my school assignment.
 
+# Currently Implemented Features
+
+- Precedence respect
+- Operators: `+`, `-`, `/`, `*`
+- Parenthesis support
+- Floating-point numbers support
+- Simple REPL
+
 
 # Building and Running
 
