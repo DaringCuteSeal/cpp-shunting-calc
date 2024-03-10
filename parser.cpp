@@ -95,7 +95,7 @@ namespace parser
 				while (ops_stack.size() > 0)
 				{
 					auto top_item = ops_stack.top();
-					if (top_item.Type != tokenizer::TokenType::OpenParanthesis)
+					if (top_item.Type != TokenType::OpenParanthesis)
 					{
 						result_queue.push(top_item);
 						ops_stack.pop();

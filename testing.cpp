@@ -1,7 +1,7 @@
 #include <iostream>
 #include "tokenizer.hpp"
 #include "parser.hpp"
-#include <string>
+#include "evaluator.hpp"
 #include "result.hpp"
 
 int main()
@@ -35,12 +35,23 @@ int main()
 
 	auto parsed_tokens = parsed_tokens_result.return_val.value();
 
-	uint i;
-	auto tokens_list_size = parsed_tokens.size();
-	for (i = 0; i < tokens_list_size; i++)
+	auto evaluated = evaluator::evaluate_postfix(parsed_tokens);
+
+	if (evaluated.result_type == result::ResultType::Err)
 	{
-		std::cout << parsed_tokens.front().Symbol << " ";
-		parsed_tokens.pop();
+		std::cout << "failed evaluating postfix, error is: " << evaluated.err_msg;
+		exit(1);
 	}
-	std::cout << "\n";
+	else
+	{
+		if (!evaluated.return_val.has_value())
+		{
+			std::cout << "somehow result is empty";
+			exit(1);
+		}
+	};
+
+	auto evaluated_result = evaluated.return_val.value();
+
+	std::cout << "Result: " << evaluated_result << "\n";
 }

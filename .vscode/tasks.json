@@ -11,6 +11,7 @@
                 // "${fileDirname}/testing.cpp",
                 "${fileDirname}/tokenizer.cpp",
                 "${fileDirname}/parser.cpp",
+                "${fileDirname}/evaluator.cpp",
                 "-O0",
                 "-Wall",
                 "-o",

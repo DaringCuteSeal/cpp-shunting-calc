@@ -14,7 +14,7 @@ namespace tokenizer
 			if (!isdigit(number.at(i)))
 				return tokenizer::Token{tokenizer::TokenType::Error, 0, " "};
 		}
-		return tokenizer::Token{tokenizer::TokenType::Number, stod(number), number};
+		return Token{tokenizer::TokenType::Number, stod(number), number};
 	};
 
 	Token get_op_token(char op_char)
@@ -22,26 +22,26 @@ namespace tokenizer
 
 		/* Only used to test token */
 		if (isdigit(op_char))
-			return tokenizer::Token{tokenizer::TokenType::Number, double(op_char) - '0', std::to_string(op_char)};
+			return Token{tokenizer::TokenType::Number, double(op_char) - '0', std::to_string(op_char)};
 
 		switch (op_char)
 		{
 		case '+':
-			return tokenizer::Token{tokenizer::TokenType::Plus, 0, "+"};
+			return Token{tokenizer::TokenType::Plus, 0, "+"};
 		case '-':
-			return tokenizer::Token{tokenizer::TokenType::Minus, 0, "-"};
+			return Token{tokenizer::TokenType::Minus, 0, "-"};
 		case '*':
-			return tokenizer::Token{tokenizer::TokenType::Mult, 0, "*"};
+			return Token{tokenizer::TokenType::Mult, 0, "*"};
 		case '/':
-			return tokenizer::Token{tokenizer::TokenType::Div, 0, "/"};
+			return Token{tokenizer::TokenType::Div, 0, "/"};
 		case '(':
-			return tokenizer::Token{tokenizer::TokenType::OpenParanthesis, 0, "("};
+			return Token{tokenizer::TokenType::OpenParanthesis, 0, "("};
 		case ')':
-			return tokenizer::Token{tokenizer::TokenType::CloseParanthesis, 0, ")"};
+			return Token{tokenizer::TokenType::CloseParanthesis, 0, ")"};
 		case '\n':
 			return tokenizer::Token{tokenizer::TokenType::EOL, 0, " "};
 		default:
-			return tokenizer::Token{tokenizer::TokenType::Error, 0, " "};
+			return Token{tokenizer::TokenType::Error, 0, " "};
 		};
 	};
 
